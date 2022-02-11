@@ -1,0 +1,116 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=3cm]{geometry} % 上下左右距離邊緣2cm
+\usepackage{amsmath,amsthm,amssymb} % 引入 AMS 數學環境
+\usepackage{yhmath}      % math symbol
+\usepackage{graphicx}    % 圖形插入用
+\usepackage{type1cm}	 % 設定fontsize用
+\usepackage{titlesec}   % 設定section等的字體
+\usepackage{titling}    % 加強 title 功能
+\usepackage{fancyhdr}   % 頁首頁尾
+\usepackage{tabularx}   % 加強版 table
+\usepackage[square, comma, numbers, super, sort&compress]{natbib}  % cite加強版
+\usepackage[unicode=true, pdfborder={0 0 0}, bookmarksdepth=-1]{hyperref}  % ref加強版
+\usepackage[usenames, dvipsnames]{color}  % 可以使用顏色
+\usepackage{enumerate}  % 加強版enumerate
+%\usepackage{xeCJK}      % 中文
+\usepackage[normalem]{ulem}
+\usepackage{cancel}
+\usepackage{indentfirst}
+
+\newtheorem{noa}{Notations}
+\newtheorem{cl}{Corollary}
+\newtheorem{con}{Conclusion}
+\newtheorem{clm}{Claim}
+\newtheorem{df}{Definition}
+\newtheorem{ex}{Example}
+\newtheorem{exs}{Exercise}
+\newtheorem{lm}{Lemma}
+\newtheorem{pp}{Property}
+\newtheorem{pr}{Problem}
+\newtheorem{prop}{Proposition}
+\newtheorem{pf}{Proof}
+\newtheorem{rem}{Remark}
+\newtheorem{sol}{Solution}
+\newtheorem{thm}{Theorem}
+\newtheorem{Mthm}{Main Theorem}
+\newtheorem{ans}{Answer}
+
+\title{Space\! -Filling Curve}
+\author{Kuan-Hung Wu}
+\date{February 2020}
+\begin{document}
+\maketitle
+
+\begin{df}$\\$
+A curve is the image of a continuous map $\gamma \colon I\rightarrow \mathbb{R}^{n} $ from an interval $I\subset\mathbb{R}$
+\end{df}
+
+\begin{df}$\\$
+An affine map is a combination of a linear transformation and a translation.
+\end{df}
+
+\begin{lm}$\\$
+Given $a,b\in \mathbb{R}$ with $a<b$,and $P_{1},P_{2},Q_{1},Q_{2}\in \mathbb{R}^{n}$, let $\phi_{i}:\mathbb{R}\rightarrow{\mathbb{R}^{n}}$ be the affine maps with $\phi_{i}(a)=P_{i},\phi_{i}(b)=Q_{i}$.Then$$|\phi_{1}(t)-\phi_{2}(t)|\leq max\{|P_{1}-P_{2}|,|Q_{1}-Q_{2}|\}$$
+for $t\in[a,b]$
+\end{lm}
+\begin{pf}
+$\\\phi_{i}(t)=(\frac{b-t}{b-a})P_{i}+(\frac{t-a}{b-a})Q_{i}$, and thus 
+$|\phi_{1}(t)-\phi_{2}(t)|=|\frac{b-t}{b-a}(P_{1}-P_{2})+\frac{t-a}{b-a}(Q_{1}-Q_{2})|\leq\frac{b-t}{b-a}|P_{1}-P_{2}|+\frac{t-a}{b-a}|Q_{1}-Q_{2}|\leq(\frac{b-t}{b-a}+\frac{t-a}{b-a})max\{|P_{1}-P_{2}|,|Q_{1}-Q_{2}|\}=max\{|P_{1}-P_{2}|,|Q_{1}-Q_{2}|\}$
+$\hfill\blacksquare$
+
+\end{pf}
+
+\begin{lm}
+Let $\Delta$ be an equilateral triangle in $\mathbb{R}^{n}$ with edges $\sqrt{3}\,l$,$f$ and $g$ be maps from $[t_{0},t_{1}]$ to $\Delta$ representing motions with constant speed along the following two given paths respectively from time to time.\\
+\includegraphics[scale=0.7]{pic1}
+
+Then
+(1) $\forall\, a\in\Delta\,,\exists\,  t \in[t_{0},t_{1}]$,$|f(t)-a|\leq l$
+\\
+
+$\qquad\;\:$(2) $\forall \,t\in[t_{0},t_{1}]$, $|f(t)-g(t)| \leq \frac{\sqrt{7}}{4}\,l$
+\end{lm}
+\begin{pf}
+(1)trivial
+(2)Observe this\\
+
+$\qquad\quad t\quad|\quad 
+t_{0}\quad|\quad t_{\frac{1}{8}}\quad|\quad t_{\frac{1}{4}}\quad|\quad t_{\frac{3}{8}}\quad|\quad t_{\frac{1}{2}}\quad|\quad t_{\frac{5}{8}}\quad|\quad t_{\frac{3}{4}}\quad|\quad t_{\frac{7}{8}}\quad|\quad
+t_{1}$\\
+$|f(t)-g(t)|\ \ |\quad\; 0\quad |\quad\;
+\frac{l}{4}\;\;\;\:|\quad\ 
+\frac{l}{2}\;\;\;\:|\quad\;
+\frac{l}{4}\;\;\;\:|\quad
+\frac{l}{2}\quad\ |\quad\!
+\frac{\sqrt{7}}{4}\;\;\:\,|\quad
+\frac{l}{2}\quad\ |\quad\ 
+\frac{l}{4}\;\;\;\:|\quad
+0$\\
+
+and by lemma 1 , the proof is completed.
+$\hfill\blacksquare$
+\end{pf}
+Now we consider a series of function $f_{n}$ defined as follow.( $f_{-1}:=0$ )\\
+
+\includegraphics[scale=0.6]{pic2.png}\\
+\includegraphics[scale=0.3]{pic3.png}\\
+
+Then $\forall\, t\in[0,1]$ , $n\in N$ , $\ |f_{n}(t)-f_{n-1}(t)|\leq\frac{\sqrt{7}}{4}(\frac{1}{2})^{n-1}l$,\\In particular, $f_{m}=\Sigma_{n=0}^{m}(f_{n}(t)-f_{n-1}(t))$ converge uniformly to a map $f:[0,1]\rightarrow\Delta$ by Weierstrass' M-test, $f_{n}$ is continuous for all $n \in N$ , thus $f$ is continuous.
+\begin{thm}
+$f([0,1])=\Delta$
+\end{thm}
+\begin{pf}
+\begin{clm}
+$\forall a\in\Delta,\forall \epsilon > 0,\exists\, t\in[0,1]$ such that $|f(t)-a|<\epsilon$,
+\end{clm}
+proof of claim 1\\
+By lemma 2 (1), $\forall\, m\in\mathbb{N},\exists\,t \in [0,1]$ such that $|f_{m}(t)-a|<(\frac{1}{2})^{m}$, and $$|f(t)-f_{m}(t)|=|\Sigma_{n=m+1}^{\infty}(f_{n}(t)-f_{n-1}(t))| \leq\Sigma_{n=m+1}^{\infty}|f_{n}(t)-f_{n-1}(t)|\leq\frac{\sqrt{7}}{2}(\frac{1}{2})^{m}l,$$$\forall t\in [0,1],\forall m\in N$
+so $|f(t)-a|\leq|f(t)-f_{m}(t)|+|f_{m}(t)-a|\leq\frac{\sqrt{7}}{2}(\frac{1}{2})^{m}+(\frac{1}{2})^{m}<\epsilon $\\for sufficiently  large m\\\\
+thus $\exists\{t_{n}\}\in [0,1]$ such that $|f(t_{n})-a|<\frac{1}{n}$, since $[0,1]$ is compact, $\exists \{t_{n_{k}}\}$ converge to a value $t\in [0,1]$, and
+$|f(t)-a|=|f(lim_{k\rightarrow\infty}t_{n_{k}})-a|=lim_{k\rightarrow\infty}|f(t_{n_{k}})-a|=0$, hence $f(t)=a$ , so $f([0,1])=\Delta$ 
+$\hfill\blacksquare$
+
+\end{pf}
+
+\end{document}
